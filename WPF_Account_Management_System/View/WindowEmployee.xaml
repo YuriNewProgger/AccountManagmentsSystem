@@ -1,0 +1,82 @@
+﻿<Window x:Class="WPF_Account_Management_System.View.WindowEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Account_Management_System.View"
+        mc:Ignorable="d"
+        Title="WindowEmployee" Height="550" Width="300"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="textBlock" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,10"/>
+        </Style>
+
+        <Style x:Key="fieldsText" TargetType="TextBox">
+            <Setter Property="Margin" Value="10,10"/>
+        </Style>
+
+        <Style x:Key="btn" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Enter FirstName" Style="{StaticResource textBlock}"/>
+        <TextBox Grid.Row="1" VerticalAlignment="Center" MaxLength="20"
+                 Style="{StaticResource fieldsText}"
+                 Text="{Binding FirstName}"/>
+
+        <TextBlock Grid.Row="2" Text="Enter LastName" Style="{StaticResource textBlock}"/>
+        <TextBox Grid.Row="3" VerticalAlignment="Center"  MaxLength="20"
+                 Style="{StaticResource fieldsText}"
+                 Text="{Binding LastName}"/>
+
+        <TextBlock Grid.Row="4" Text="Enter Patronymic" Style="{StaticResource textBlock}"/>
+        <TextBox Grid.Row="5" VerticalAlignment="Center" MaxLength="20"
+                 Style="{StaticResource fieldsText}"
+                 Text="{Binding Patronymic}"/>
+
+        <TextBlock Grid.Row="6" Text="Choose Birthday" Style="{StaticResource textBlock}"/>
+        <DatePicker Grid.Row="7" Margin="10,10"
+                    SelectedDate="{Binding DateBirthday}"/>
+
+        <TextBlock Grid.Row="8" Text="Enter about information" Style="{StaticResource textBlock}"/>
+        <TextBox Grid.Row="9" VerticalAlignment="Center" MaxLength="200"
+                 Style="{StaticResource fieldsText}"
+                 Text="{Binding About}"/>
+
+        <TextBlock Grid.Row="10" Text="Choose department" Style="{StaticResource textBlock}"/>
+        <ComboBox Grid.Row="11" VerticalAlignment="Center" Margin="10,10"
+                  ItemsSource="{Binding Departments}"
+                  SelectedItem="{Binding Department}"/>
+
+        <Grid Grid.Row="13">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="OK" Style="{StaticResource btn}" VerticalAlignment="Center"
+                    Command="{Binding OKWinCreateNewEmployee}"/>
+            <Button Grid.Column="1" Content="Cancel" Style="{StaticResource btn}"
+                    Command="{Binding CloseWinCreateNewEmployee}"/>
+        </Grid>
+    </Grid>
+</Window>
